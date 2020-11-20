@@ -1,0 +1,152 @@
+.list-item {
+  display: grid;
+  grid-template-columns: 10% 80% 5%;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: rgb(36, 36, 36);
+  color: aliceblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease;
+
+  /* box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px #fff; */
+}
+.list-item_ckecked {
+  background-color: whitesmoke;
+}
+
+.list-item__mandalorian {
+  color: tomato;
+  font-size: 2rem;
+  cursor: pointer;
+  justify-self: end;
+}
+
+.list-item__checkbox-wrapper {
+  width: 13%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item__text {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  position: relative;
+  padding: 0.4rem 1.3rem;
+  background-color: rgb(36, 36, 36);
+  box-shadow: 0 0 5px #fff inset, 0 0 8px #fff inset, 0 0 12px #fff inset,
+    0 0 15px red inset, 0 0 25px red inset;
+  border-radius: 2rem;
+  color: whitesmoke;
+  transition: background-color 0.5s ease;
+}
+.list-item__text_checked {
+  background-color: whitesmoke;
+  color: rgb(0, 0, 0);
+}
+
+.list-item__light-saber {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.list-item__icons {
+  background-color: whitesmoke;
+  padding: 0.2rem;
+  font-size: 200%;
+  color: rgb(36, 36, 36);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+.list-item__icons_checked {
+  background-color: rgb(36, 36, 36);
+  color: whitesmoke;
+}
+.list-item__input {
+  display: none;
+}
+
+.list-item__empire-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.list-item__strikethrough {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  background-color: rgb(36, 36, 36);
+  transition: transform 0.3s ease, background-color 0.5s ease;
+}
+
+.list-item__strikethrough_checked {
+  transform: translate(75%, -50%);
+  background-color: whitesmoke;
+}
+
+.list-item__light-saber {
+  background-color: transparent;
+  border-radius: 2px;
+  width: 95%;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.list-item__light-saber_checked {
+  background-color: whitesmoke;
+  box-shadow: 0 0 5px rgb(221, 221, 221), 0 0 8px rgb(221, 221, 221),
+    0 0 12px rgb(221, 221, 221), 0 0 15px blue, 0 0 25px blue;
+  animation-name: light_saber;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes light_saber {
+  from {
+    width: 0%;
+    left: 2%;
+  }
+  to {
+    width: 95%;
+    left: 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .list-item__checkbox-wrapper {
+    font-size: 0.8rem;
+  }
+  .list-item__icons {
+    padding: 0.2rem;
+    font-size: 160%;
+  }
+  .list-item__strikethrough {
+    height: 1.4rem;
+    width: 1.4rem;
+  }
+}
+@media (min-width: 1025px) {
+  .list-item__text {
+    font-size: 0.8rem;
+    height: 2.2rem;
+  }
+}
