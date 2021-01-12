@@ -2,7 +2,7 @@
 
 # Fired by ReactJS & Firebase
 
-# Main goal was efficient implementation of React hooks such setState, useEffect, useContext, useReducer
+# Main goal was efficient implementation of React hooks such as setState, useEffect, useContext, useReducer
 
 # Not final version, there gonna be changes with implementing SCSS
 
