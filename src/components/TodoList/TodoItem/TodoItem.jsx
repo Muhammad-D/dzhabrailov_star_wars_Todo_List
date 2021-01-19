@@ -6,11 +6,11 @@ import {
   faRebel,
   faEmpire,
 } from "@fortawesome/free-brands-svg-icons";
-import { Context } from "../../../Context";
+import { myContext } from "../../../Context";
 import { deleteTask, toggleTask } from "../../../main-reduser";
 
 const TodoItem = ({ id, taskStatus, taskDescription }) => {
-  const { dispatch } = useContext(Context);
+  const { dispatch } = useContext(myContext);
 
   return (
     <li className={`list-item ${taskStatus && "list-item_ckecked"}`}>

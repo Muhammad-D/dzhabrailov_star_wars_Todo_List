@@ -1,13 +1,17 @@
-import React, { useEffect, useReducer, useState } from "react";
+import { initialStateType, actionType } from "./main-reduser-types";
+import React, { Reducer, useEffect, useReducer, useState } from "react";
 import "./App.css";
 import TodoList from "./components/TodoList/TodoList";
-import { Context } from "./Context";
+import { myContext } from "./Context";
 import mainReduser, { addTask, getState } from "./main-reduser";
 import { db } from "./firebase";
 
 function App() {
-  const [todoTitle, setTodoTitle] = useState("");
-  const [state, dispatch] = useReducer(mainReduser, [""]);
+  const [todoTitle, setTodoTitle] = useState<string>("");
+  const [state, dispatch] = useReducer<Reducer<initialStateType, actionType>>(
+    mainReduser,
+    [{ id: 0, taskStatus: false, taskDescription: "" }]
+  );
 
   useEffect(() => {
     db.collection("star_wars")
@@ -15,15 +19,14 @@ function App() {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          dispatch(
-            getState(Object.keys(doc.data()).map((key) => doc.data()[key]))
-          );
+          const keys: any = doc.data();
+          dispatch(getState(Object.keys(keys).map((key) => keys[key])));
         }
       });
   }, []);
 
   useEffect(() => {
-    if (state["0"] !== "") {
+    if (state[0].id !== 0) {
       db.collection("star_wars")
         .doc("todos")
         .set({
@@ -32,7 +35,7 @@ function App() {
     }
   }, [state]);
 
-  const addTodo = (e) => {
+  const addTodo = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
       dispatch(addTask(todoTitle));
       setTodoTitle("");
@@ -40,7 +43,7 @@ function App() {
   };
 
   return (
-    <Context.Provider value={{ dispatch }}>
+    <myContext.Provider value={{ dispatch }}>
       <div className="app">
         <h1>TodoList</h1>
         <input
@@ -53,7 +56,7 @@ function App() {
         <div className="app__underline"></div>
         <TodoList todos={state} />
       </div>
-    </Context.Provider>
+    </myContext.Provider>
   );
 }
 
