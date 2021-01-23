@@ -1,17 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./TodoItem.css";
+import { connect } from "react-redux";
+// icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMandalorian,
   faRebel,
   faEmpire,
 } from "@fortawesome/free-brands-svg-icons";
-import { myContext } from "../../../Context";
-import { deleteTask, toggleTask } from "../../../main-reduser";
+//action creaters
+import { deleteTask, toggleTask } from "../../../actions/index";
 
-const TodoItem = ({ id, taskStatus, taskDescription }) => {
-  const { dispatch } = useContext(myContext);
-
+const TodoItem = ({
+  id,
+  taskStatus,
+  taskDescription,
+  toggleTask,
+  deleteTask,
+}) => {
   return (
     <li className={`list-item ${taskStatus && "list-item_ckecked"}`}>
       <div className="list-item__checkbox-wrapper">
@@ -24,7 +30,7 @@ const TodoItem = ({ id, taskStatus, taskDescription }) => {
             className="list-item__input"
             type="checkbox"
             checked={taskStatus}
-            onChange={(e) => dispatch(toggleTask(id))}
+            onChange={(e) => toggleTask(id)}
           />
           <div className="list-item__empire-wrapper">
             <FontAwesomeIcon icon={faEmpire} className="list-item__empire" />
@@ -52,10 +58,10 @@ const TodoItem = ({ id, taskStatus, taskDescription }) => {
       <FontAwesomeIcon
         icon={faMandalorian}
         className="list-item__mandalorian"
-        onClick={(e) => dispatch(deleteTask(id))}
+        onClick={(e) => deleteTask(id)}
       />
     </li>
   );
 };
 
-export default TodoItem;
+export default connect(null, { toggleTask, deleteTask })(TodoItem);
