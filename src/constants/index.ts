@@ -1,9 +1,12 @@
-enum Constants {
-  TOGGLE_TASK = "todo-list-reduser/TOGGLE_TASK",
-  DELETE_TASK = "todo-list-reduser/DELETE_TASK",
-  ADD_TASK = "todo-list-reduser/ADD_TASK",
-  GET_TODOS = "todo-list-reduser/GET_TODOS",
-  ON_LOAD = "todo-list-reduser/ON_LOAD",
-}
+import { LoadingConstants } from "./loading";
+import { TodoListConstants } from "./todoList";
 
-export { Constants };
+type IActionType =
+  | TodoListConstants.ADD_TASK
+  | TodoListConstants.DELETE_TASK
+  | TodoListConstants.GET_TODOS
+  | TodoListConstants.ON_LOAD
+  | TodoListConstants.TOGGLE_TASK
+  | LoadingConstants.IS_LOADING;
+
+export type { IActionType };

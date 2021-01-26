@@ -1,8 +1,7 @@
 .list-item {
-  display: grid;
-  grid-template-columns: 10% 80% 5%;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  gap: 0.3rem;
   padding: 0.3rem;
   border-radius: 2rem;
   background-color: rgb(36, 36, 36);
@@ -24,7 +23,7 @@
 }
 
 .list-item__checkbox-wrapper {
-  width: 13%;
+  margin-right: 0.5rem;
   font-size: 1rem;
   display: flex;
   justify-content: space-between;
@@ -32,6 +31,8 @@
 }
 
 .list-item__text {
+  width: 82%;
+  margin-right: 0.5rem;
   display: flex;
   align-items: center;
   font-size: 0.8rem;
@@ -71,6 +72,10 @@
 .list-item__icons_checked {
   background-color: rgb(36, 36, 36);
   color: whitesmoke;
+}
+.list-item__icons_isLoading {
+  background-color: rgb(170, 156, 156);
+  color: rgb(131, 100, 100);
 }
 .list-item__input {
   display: none;
@@ -148,5 +153,16 @@
   .list-item__text {
     font-size: 0.8rem;
     height: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .list-item__text {
+    font-size: 0.5rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .list-item__text {
+    font-size: 0.4rem;
   }
 }

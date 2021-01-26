@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { addTodoAPI } from "../api/index";
-import { Constants } from "../constants";
-import { isLoading } from "../actions/loading";
+import { isLoading } from "../action/actions-creaters/loading";
+import { TodoListConstants } from "../constants/todoList";
 
 const getTodoList = (state) => state.todoListReducer.todoList;
 
@@ -15,5 +15,5 @@ function* addTodos() {
 }
 
 export default function* addTodosWatcher() {
-  yield takeEvery(Constants.ADD_TASK, addTodos);
+  yield takeEvery(TodoListConstants.ADD_TASK, addTodos);
 }

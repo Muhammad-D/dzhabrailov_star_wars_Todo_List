@@ -3,7 +3,7 @@ import "./Loading.scss";
 
 import loadingSvg from "../../assets/animation/loading.svg";
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <div className="loading">
       <img src={loadingSvg} alt="Loading" />

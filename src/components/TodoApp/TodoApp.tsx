@@ -6,19 +6,35 @@ import { connect } from "react-redux";
 import TodoList from "../TodoList/TodoList";
 
 //action creaters
-import { addTask, onLoad } from "../../actions/index";
+import { addTask, onLoad } from "../../action/actions-creaters/todo-list";
 import Loading from "../Loading/Loading";
+import { ITodo } from "../../state-management/types/todo-list-reducer-type";
 
-const TodoApp = ({ addTask, todoList, onLoad, isLoading }) => {
-  window.props = { addTask, todoList };
+// imported types
 
-  const [todoTitle, setTodoTitle] = useState("");
+import { RootState } from "../../state-management/store";
+
+//types
+interface ITodoApp {
+  isLoading: boolean;
+  todoList: ITodo[];
+  addTask: (todoTitle: string) => void;
+  onLoad: () => void;
+}
+
+const TodoApp: React.FC<ITodoApp> = ({
+  addTask,
+  onLoad,
+  todoList,
+  isLoading,
+}) => {
+  const [todoTitle, setTodoTitle] = useState<string>("");
 
   useEffect(() => {
     onLoad();
   }, []);
 
-  const addTodo = (e) => {
+  const addTodo = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
       addTask(todoTitle);
       setTodoTitle("");
@@ -44,9 +60,12 @@ const TodoApp = ({ addTask, todoList, onLoad, isLoading }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   todoList: state.todoListReducer.todoList,
   isLoading: state.loadingReducer,
 });
 
-export default connect(mapStateToProps, { addTask, onLoad })(TodoApp);
+export default connect(mapStateToProps, {
+  addTask,
+  onLoad,
+})(TodoApp);

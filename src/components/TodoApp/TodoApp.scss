@@ -2,6 +2,10 @@
   margin: 0.2rem auto 0;
   width: 70%;
 
+  & > h1 {
+    margin-bottom: 2rem;
+  }
+
   &__inpit-field {
     color: rgb(41, 10, 10);
     font-family: "Press Start 2P", cursive;
@@ -10,10 +14,11 @@
     padding: 0.5rem 0.4rem;
     border: none;
     outline: none;
-    box-shadow: 10px 0 20px #4ca6a7;
+    // box-shadow: 10px 0 20px #4ca6a7;
 
     &::placeholder {
-      color: rgb(102, 33, 33);
+      color: rgba(102, 33, 33, 0.3);
+      font-size: 0.7rem;
     }
   }
 
@@ -31,4 +36,23 @@
 .todo-app__inpit-field:focus + .todo-app__underline {
   box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 15px black,
     0 0 25px 3px blue;
+}
+
+@media screen and (max-width: 510px) {
+  .todo-app {
+    margin: 0.2rem auto 0;
+    width: 90%;
+  }
+  .todo-app__inpit-field {
+    font-size: 0.7rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .todo-app {
+    margin: 0.2rem auto 0;
+    width: 96%;
+  }
+  .todo-app__inpit-field {
+    font-size: 0.5rem;
+  }
 }

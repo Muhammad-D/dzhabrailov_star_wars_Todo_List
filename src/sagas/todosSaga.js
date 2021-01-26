@@ -1,8 +1,8 @@
 import { call, put, take } from "redux-saga/effects";
 import { todosAPI } from "../api/index";
-import { getState } from "../actions/index";
-import { Constants } from "../constants";
-import { isLoading } from "../actions/loading";
+import { getState } from "../action/actions-creaters/todo-list";
+import { isLoading } from "../action/actions-creaters/loading";
+import { TodoListConstants } from "../constants/todoList";
 
 function* fetchTodos() {
   try {
@@ -14,6 +14,6 @@ function* fetchTodos() {
 }
 
 export default function* getTodos() {
-  yield take(Constants.ON_LOAD);
+  yield take(TodoListConstants.ON_LOAD);
   yield call(fetchTodos);
 }

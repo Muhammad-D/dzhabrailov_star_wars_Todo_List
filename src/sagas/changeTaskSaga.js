@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import { isLoading } from "../actions/loading";
+import { isLoading } from "../action/actions-creaters/loading";
 import { addTodoAPI } from "../api";
-import { Constants } from "../constants";
+import { TodoListConstants } from "../constants/todoList";
 
 const getTodoList = (state) => state.todoListReducer.todoList;
 
@@ -17,6 +17,6 @@ function* deleteTaskWorker({ payload }) {
 }
 
 export default function* changeTaskWatcher() {
-  yield takeEvery(Constants.TOGGLE_TASK, toggleTaskWorker);
-  yield takeEvery(Constants.DELETE_TASK, deleteTaskWorker);
+  yield takeEvery(TodoListConstants.TOGGLE_TASK, toggleTaskWorker);
+  yield takeEvery(TodoListConstants.DELETE_TASK, deleteTaskWorker);
 }
